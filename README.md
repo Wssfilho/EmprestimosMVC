@@ -89,4 +89,4 @@ Este projeto está sob a licença [MIT](LICENSE).
 
 ---
 
-Desenvolvido com ❤️ por [Seu Nome](https://github.com/Wssfilho)
+Desenvolvido com ❤️ por [Wilson](https://github.com/Wssfilho)
