@@ -2,19 +2,21 @@
 using LivrosEmprestimos.Data;
 using LivrosEmprestimos.Models;
 using Microsoft.AspNetCore.Mvc;
+using LivrosEmprestimos.Repository.Contracts;
 
 namespace LivrosEmprestimos.Controllers
 {
     public class EmprestimoController : Controller
     {
-        private readonly ApplicationDbContext _context;
-        public EmprestimoController(ApplicationDbContext context)
+        private readonly IEmprestimoRepository _emprestimo;
+
+        public EmprestimoController(IEmprestimoRepository emprestimo)
         {
-            _context = context;
+            _emprestimo = emprestimo;
         }
         public IActionResult Index()
         {
-            IEnumerable<EmprestimosModel> emprestimos = _context.Emprestimos;
+            IEnumerable<EmprestimosModel> emprestimos = (IEnumerable<EmprestimosModel>)_emprestimo.GetAll();
             return View(emprestimos);
         }
 
@@ -25,25 +27,15 @@ namespace LivrosEmprestimos.Controllers
         [HttpGet]
         public IActionResult Editar(int? id)
         {
-            if (id == 0 || id == null)
-            {
-                return NotFound();
-            }
-            EmprestimosModel emprestimos = _context.Emprestimos.FirstOrDefault(x => x.Id == id);
-            if(emprestimos == null)
-            {
-                return NotFound();
-            }
+            EmprestimosModel emprestimos = _emprestimo.GetId(id);
 
             return View(emprestimos);
         }
         [HttpPost]
         public IActionResult Cadastrar(EmprestimosModel emprestimos)
         {
-            if(ModelState.IsValid)
+            if(_emprestimo.Cadastrar(emprestimos) != null)
             {
-                _context.Emprestimos.Add(emprestimos);
-                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View();
@@ -51,41 +43,28 @@ namespace LivrosEmprestimos.Controllers
         [HttpPost]
         public IActionResult Editar(EmprestimosModel emprestimo)
         {
-            if (ModelState.IsValid)
+            if (_emprestimo.Editar(emprestimo) != null)
             {
-                _context.Emprestimos.Update(emprestimo);
-                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             return View(emprestimo);
         }
         [HttpGet]
         public IActionResult Excluir(int? id) {
 
-            if (id == 0 || id == null)
-            {
-                return NotFound();
-            }
-            EmprestimosModel emprestimos = _context.Emprestimos.FirstOrDefault(x => x.Id == id);
-            if (emprestimos == null)
-            {
-                return NotFound();
-            }
+            EmprestimosModel emprestimos = _emprestimo.GetId(id);
             return View(emprestimos);
         }
         [HttpPost]
         public IActionResult Excluir(EmprestimosModel emprestimo)
         {
-          if(emprestimo == null)
+          if(_emprestimo.Excluir(emprestimo) != null)
             {
-                return NotFound();
-            }
-            else
-            {
-                _context.Emprestimos.Remove(emprestimo);
-                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
+            return View(emprestimo);
+
         }
 
     }
