@@ -59,5 +59,34 @@ namespace LivrosEmprestimos.Controllers
             }
             return View(emprestimo);
         }
+        [HttpGet]
+        public IActionResult Excluir(int? id) {
+
+            if (id == 0 || id == null)
+            {
+                return NotFound();
+            }
+            EmprestimosModel emprestimos = _context.Emprestimos.FirstOrDefault(x => x.Id == id);
+            if (emprestimos == null)
+            {
+                return NotFound();
+            }
+            return View(emprestimos);
+        }
+        [HttpPost]
+        public IActionResult Excluir(EmprestimosModel emprestimo)
+        {
+          if(emprestimo == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _context.Emprestimos.Remove(emprestimo);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+        }
+
     }
 }
