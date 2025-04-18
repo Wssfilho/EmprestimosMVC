@@ -14,6 +14,7 @@ namespace LivrosEmprestimos.Repository
         {
             _context = context;
         }
+       
 
         public EmprestimosModel Cadastrar(EmprestimosModel emprestimos)
         {
@@ -40,6 +41,7 @@ namespace LivrosEmprestimos.Repository
             _context.SaveChanges();
             return emprestimo;
         }
+        
 
        
 
