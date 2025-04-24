@@ -510,7 +510,6 @@ C:\Users\wilso\OneDrive\Documentos\GitHub\EmprestimosMVC\obj\Debug\net8.0\static
 C:\Users\wilso\OneDrive\Documentos\GitHub\EmprestimosMVC\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.LivrosEmprestimos.props
 C:\Users\wilso\OneDrive\Documentos\GitHub\EmprestimosMVC\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.LivrosEmprestimos.props
 C:\Users\wilso\OneDrive\Documentos\GitHub\EmprestimosMVC\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\wilso\OneDrive\Documentos\GitHub\EmprestimosMVC\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\wilso\OneDrive\Documentos\GitHub\EmprestimosMVC\obj\Debug\net8.0\LivrosEm.8422251C.Up2Date
 C:\Users\wilso\OneDrive\Documentos\GitHub\EmprestimosMVC\obj\Debug\net8.0\LivrosEmprestimos.dll
 C:\Users\wilso\OneDrive\Documentos\GitHub\EmprestimosMVC\obj\Debug\net8.0\refint\LivrosEmprestimos.dll
